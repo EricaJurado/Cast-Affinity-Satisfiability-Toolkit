@@ -20,7 +20,7 @@ for facet_name in facet_names:
         file.write(tempfiledata)
 
 
-with open("generated/similarity_generated", 'w') as file:
+with open("generated/similarity_generated.pl", 'w') as file:
     header = "#const high=1.\n#const neutral=0.\n#const low=-1.\n\nsimilarity(-" + str(len(facet_names)) + ".." + str(len(facet_names)) + ").\n\n"
     file.write(header)
     file.write("1{pair_similarity(A,B,X) : similarity(X)}1:- human(A), human(B), A!=B.\n\n")
@@ -36,3 +36,11 @@ with open("generated/similarity_generated", 'w') as file:
         final_string = final_string + "E" + str(j) + "+"
     final_string = final_string + "E" + str(i-1) + "!=T."
     file.write(final_string)
+
+with open("generated/similarity_instance.pl", 'w') as file:
+    #file.write("#show pair_similarity/3.\n")
+    file.write("%problem instance\n")
+    file.write("human(1..3).\n\n")
+    file.write("%add more rules here\n")
+    file.write("%example:\npair_similarity(1,2,2).\n")
+
