@@ -22,7 +22,7 @@ for facet_name in facet_names:
         file.write(tempfiledata)
 
 
-with open("generated/similarity_generated.pl", 'w') as file:
+with open("generated/similarity_generated.lp", 'w') as file:
     max = str(len(facet_names))
     file.write("#const max = " + max + ".")
     file.write("#const chars = " + num_chars + ".")
@@ -40,7 +40,7 @@ with open("generated/similarity_generated.pl", 'w') as file:
     final_string = final_string + "E" + str(i-1) + "!=T."
     file.write(final_string)
 
-with open("generated/similarity_instance.pl", 'w') as file:
+with open("generated/similarity_instance.lp", 'w') as file:
     #file.write("#show pair_similarity/3.\n")
     file.write("%problem instance\n")
     file.write("human(1.." + num_chars + ").\n\n")
