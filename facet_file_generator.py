@@ -1,3 +1,5 @@
+from shutil import copyfile
+num_chars = str(3) ##TODO: automate this? and instance file?
 
 facet_names = []
 
@@ -21,9 +23,10 @@ for facet_name in facet_names:
 
 
 with open("generated/similarity_generated.pl", 'w') as file:
-    header = "#const high=1.\n#const neutral=0.\n#const low=-1.\n\nsimilarity(-" + str(len(facet_names)) + ".." + str(len(facet_names)) + ").\n\n"
-    file.write(header)
-    file.write("1{pair_similarity(A,B,X) : similarity(X)}1:- human(A), human(B), A!=B.\n\n")
+    max = str(len(facet_names))
+    file.write("#const max = " + max + ".")
+    file.write("#const chars = " + num_chars + ".")
+    file.write("similarity(-" + max + ".." + max + ").\n\n")
     file.write(":-pair_similarity(A, B, T), human(A), human(B), similarity(T),\n")
 
     i = 1
@@ -40,7 +43,12 @@ with open("generated/similarity_generated.pl", 'w') as file:
 with open("generated/similarity_instance.pl", 'w') as file:
     #file.write("#show pair_similarity/3.\n")
     file.write("%problem instance\n")
-    file.write("human(1..3).\n\n")
+    file.write("human(1.." + num_chars + ").\n\n")
     file.write("%add more rules here\n")
     file.write("%example:\npair_similarity(1,2,2).\n")
+
+copyfile("similarity_persistant.lp", "generated/similarity_persistant.lp")
+
+
+
 
