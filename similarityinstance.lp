@@ -13,5 +13,6 @@ pair_similarity(3,2,2).
 %TODO: add num-similar parameter (so k out of n
 %	traits can have x similarity)
 
+facet_affinity(feelings, high, tenderness, high, 2).
 
 
