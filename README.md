@@ -13,6 +13,11 @@ run the following command: `clingo 1 *`
 Adding the following code snippets to similarity_instance.lp will have these
 corresponding effects:
 
+`facet_affinity(F1,L1,F2,L2,A).` Sets a rule that means a person with a facet
+F1 of level L1, will have A added to their affinity towards any person with a
+facet F2 of level L2. A can be positive of negative. Levels L1 and L2 can be
+either low, neutral, or high. 
+
 `match_n_match_sim(N,S).` Will ensure exactly N pairs of carachters have a pair 
 similarity value of exactly S.
 
