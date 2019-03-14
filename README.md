@@ -16,10 +16,10 @@ corresponding effects:
 `match_n_match_sim(N,S).` Will ensure exactly N pairs of carachters have a pair 
 similarity value of exactly S.
 
-`min_n_match_sim` Will ensure at least N pairs of carachters have a pair 
+`min_n_match_sim(N,S).` Will ensure at least N pairs of carachters have a pair 
 similarity value of exactly S.
 
-`max_n_match_sim` Will ensure at most N pairs of carachters have a pair 
+`max_n_match_sim(N,S).` Will ensure at most N pairs of carachters have a pair 
 similarity value of exactly S.
 
 `match_n_min_sim(N,S).` Will ensure exactly N pairs of carachters have a pair
