@@ -9,6 +9,14 @@
 	pair_similarity(B, A, T2),
 	T1!=T2. 
 
+%rule for specific char matching
+:-char_x_min_n_min_sim(X,N,S), not 2*N{pair_similarity(X,Y,Z) : human(X), human(Y), X!=Y, Z >= S}2*chars. 
+
+:-char_x_min_n_max_sim(X,N,S), not 2*N{pair_similarity(X,Y,Z) : human(X), human(Y), X!=Y, Z <= S}2*chars. 
+
+
+
+
 %there are exactly N pairs of carachters who have a pair similarity value of exactly S.
 :-match_n_match_sim(N, S), not 2*N{pair_similarity(X,Y,S) : human(X), human(Y), X!=Y}2*N. 
 
