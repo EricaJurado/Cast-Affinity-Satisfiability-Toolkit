@@ -4,16 +4,19 @@ human(mom).
 human(lauren).
 human(charolette).
 human(mollie).
-human(katrina).
-human(george).
-human(carl).
-human(joel).
-human(stevie).
-human(jason).
-human(curtis).
+%human(katrina).
+%human(george).
+%human(carl).
+%human(joel).
+%human(stevie).
+%human(jason).
+%human(curtis).
 
-pair_affinity(amelia, mom, 12).
-pair_affinity(mom, amelia, 12).
+%pair_affinity(amelia, mom, 5).
+%pair_affinity(mom, amelia, 5).
+
+pair_similarity(amelia, mom, 5).
+pair_similarity(mom, amelia, 5).
  
 level(assertiveness, amelia, 2).
 level(gregariousness, amelia, 5).
@@ -31,8 +34,11 @@ level(impulsiveness, amelia, 3).
 level(selfconsciousness, amelia, 7).
 level(vulnerability, amelia, 6).
 
-char_x_min_n_min_sim(amelia, 3, 11).
-char_x_min_n_max_sim(amelia, 3, -8).
+%char_x_min_n_min_sim(amelia, 1, 4).
+%char_x_min_n_max_sim(amelia, 1, -3).
+
+char_x_min_n_min_aff(amelia, 2, 4).
+char_x_min_n_max_aff(amelia, 2, -3).
 
 
 

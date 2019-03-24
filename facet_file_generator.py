@@ -1,11 +1,11 @@
 from shutil import copyfile
-num_chars = str(12) ##TODO: automate this? and instance file?
-#num_chars = str(3) ##TODO: automate this? and instance file?
+#num_chars = str(12) ##TODO: automate this? and instance file?
+num_chars = str(3) ##TODO: automate this? and instance file?
 
 facet_names = []
 
 #get requested facets
-with open("facets.txt", 'r') as file:
+with open("lessfacets.txt", 'r') as file:
     filedata = file.read()
     facet_names = filedata.rstrip('\n').split('\n')
     

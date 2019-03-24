@@ -10,10 +10,13 @@
 	T1!=T2. 
 
 %rule for specific char matching
-:-char_x_min_n_min_sim(X,N,S), not 2*N{pair_similarity(X,Y,Z) : human(X), human(Y), X!=Y, Z >= S}2*chars. 
+:-char_x_min_n_min_sim(X,N,S), not N{pair_similarity(X,Y,Z) : human(X), human(Y), X!=Y, Z >= S}chars. 
 
-:-char_x_min_n_max_sim(X,N,S), not 2*N{pair_similarity(X,Y,Z) : human(X), human(Y), X!=Y, Z <= S}2*chars. 
+:-char_x_min_n_max_sim(X,N,S), not N{pair_similarity(X,Y,Z) : human(X), human(Y), X!=Y, Z <= S}chars. 
 
+:-char_x_min_n_min_aff(X,N,S), not N{pair_affinity(X,Y,Z) : human(X), human(Y), X!=Y, Z >= S}chars. 
+
+:-char_x_min_n_max_aff(X,N,S), not N{pair_affinity(X,Y,Z) : human(X), human(Y), X!=Y, Z <= S}chars. 
 
 
 
