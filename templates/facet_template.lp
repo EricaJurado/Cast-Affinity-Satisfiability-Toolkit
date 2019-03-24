@@ -30,7 +30,7 @@ status(template, low).
 
 % low template_sim if template difference is beyond some bound
 :-template_sim(A,B,low), human(A), human(B), A != B, 
-		template_level(A,X), level(template,B,Y),
+		level(template,A,X), level(template,B,Y),
 		template(X), template(Y), |X-Y| < template_low_level.
 
 % neutral template_sim if not similar or opposite 
@@ -39,7 +39,7 @@ status(template, low).
 		template(X), template(Y), |X-Y| <= template_high_level.
 
 :-template_sim(A,B,neutral), human(A), human(B), A != B, 
-		template_level(A,X), level(template,B,Y),
+		level(template,A,X), level(template,B,Y),
 		template(X), template(Y), |X-Y| >= template_low_level.
 
 

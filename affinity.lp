@@ -5,9 +5,6 @@
 % ex: someone who is more assertive might have an affinity for someone who is more compliant? 
 %
 
-#show pair_affinity/3.
-#show level/3.
-
 def(low, 1..3).
 def(neutral, 4..6).
 def(high, 7..10).
