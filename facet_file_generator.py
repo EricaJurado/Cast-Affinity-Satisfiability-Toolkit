@@ -35,11 +35,13 @@ with open("generated/similarity_generated.lp", 'w') as file:
     file.write("#const max = " + max + ".\n")
     file.write("#const chars = " + num_chars + ".\n")
     file.write("similarity(-" + max + ".." + max + ").\n\n")
+    #file.write(":-pair_similarity(A, B, T), human(A), human(B), similarity(T),\n")
     file.write(":-pair_similarity(A, B, T), human(A), human(B), similarity(T),\n")
+    #file.write("X = #sum{L : sim(F,A,B,L), facet(F)},\n	X!=T.")	
 
     i = 1
     for facet_name in facet_names:
-        file.write("\t" + facet_name + "_sim(A,B,E" + str(i) + "),\n")
+        file.write("\tsim(" + facet_name + ",A,B,E" + str(i) + "),\n")
         i+=1
     final_string = "\t"
 
