@@ -8,30 +8,29 @@ line = linecache.getline('sample_output.txt', 5)
 
 facts = line.split()
 
-print(facts[1])
-
 for i, line in enumerate(facts):
   line = line.replace('(', ',')
   line = line.replace(')', '')
   facts[i] = line.split(",")
 
-#for fact in facts:
-#  if fact[0] in important:
-#    print(fact)
 
-cast = {}
+with open("partial_history.json", "r") as history_file:
+  history = json.loads(history_file.read())
+  list = history["history"][0]["data"]
+  
+  for fact in facts:
+    if fact[0] == "level":
+      #cast[fact[2]][fact[1]] = fact[3]
+      dic = {"class" : "attribute",
+	"type" : fact[1],
+	"first" : fact[2],
+	"value" : int(fact[3])}
+      list.append(dic)      
 
-for fact in facts:
-  if fact[0] == "human":
-    cast[fact[1]] = {}
 
+#print(json.dumps(history))
 
-for fact in facts:
-  if fact[0] == "level":
-    cast[fact[2]][fact[1]] = fact[3]
-
-
-with open("cast.json", "w") as file:
-  print(json.dump(cast, file, sort_keys=True, indent=4, separators=(',', ': ')))
+with open("history.json", "w") as file:
+  json.dump(history, file, sort_keys=True, indent=4, separators=(',', ': '))
 
 

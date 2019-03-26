@@ -5,7 +5,7 @@ num_chars = str(3) ##TODO: automate this? and instance file?
 facet_names = []
 
 #get requested facets
-with open("lessfacets.txt", 'r') as file:
+with open("persistent/lessfacets.txt", 'r') as file:
     filedata = file.read()
     facet_names = filedata.rstrip('\n').split('\n')
     
@@ -15,7 +15,7 @@ with open("lessfacets.txt", 'r') as file:
 #    new_facet = input("enter the name of your next desired facet, or press enter to generate files:")
 
 # Read in the template file
-with open('templates/facet_template.lp', 'r') as file :
+with open('persistent/facet_template.lp', 'r') as file :
     filedata = file.read()
 
 for facet_name in facet_names:
@@ -57,9 +57,9 @@ with open("generated/similarity_generated.lp", 'w') as file:
 #    file.write("%add more rules here\n")
 #    file.write("%example:\npair_similarity(1,2,2).\n")
 
-copyfile("similarity_persistant.lp", "generated/similarity_persistant.lp")
-copyfile("affinity.lp", "generated/affinity.lp")
-copyfile("amelia.lp", "generated/amelia.lp")
-copyfile("facet_affinity.lp", "generated/facet_affinity.lp")
+copyfile("persistent/similarity_persistant.lp", "generated/similarity_persistant.lp")
+copyfile("persistent/affinity.lp", "generated/affinity.lp")
+copyfile("persistent/amelia.lp", "generated/amelia.lp")
+copyfile("persistent/facet_affinity.lp", "generated/facet_affinity.lp")
 
 
