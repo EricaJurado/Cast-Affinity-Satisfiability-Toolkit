@@ -4,7 +4,7 @@ import json
 
 important = ["human", "pair_similarity", "pair_affinity", "level"]
 
-line = linecache.getline('sample_output.txt', 5)
+line = linecache.getline('amelia_output.txt', 5)
 
 facts = line.split()
 
@@ -30,7 +30,7 @@ with open("partial_history.json", "r") as history_file:
 
 #print(json.dumps(history))
 
-with open("history.json", "w") as file:
+with open("amelia_history.json", "w") as file:
   json.dump(history, file, sort_keys=True, indent=4, separators=(',', ': '))
 
 

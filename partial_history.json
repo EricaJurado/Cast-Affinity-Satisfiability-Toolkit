@@ -32,7 +32,14 @@
 				"type" : "age",
 				"first": "mollie",
 				"value": 10
+			},
+			{
+				"class" : "attribute",
+				"type" : "age",
+				"first": "katrina",
+				"value": 10
 			}
+
 		]}
 	]
 }

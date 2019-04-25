@@ -1,11 +1,11 @@
 from shutil import copyfile
 #num_chars = str(12) ##TODO: automate this? and instance file?
-num_chars = str(3) ##TODO: automate this? and instance file?
+num_chars = str(5) ##TODO: automate this? and instance file?
 
 facet_names = []
 
 #get requested facets
-with open("persistent/lessfacets.txt", 'r') as file:
+with open("persistent/amelia_facets.txt", 'r') as file:
     filedata = file.read()
     facet_names = filedata.rstrip('\n').split('\n')
     
@@ -60,6 +60,6 @@ with open("generated/similarity_generated.lp", 'w') as file:
 copyfile("persistent/similarity_persistant.lp", "generated/similarity_persistant.lp")
 copyfile("persistent/affinity.lp", "generated/affinity.lp")
 copyfile("persistent/amelia.lp", "generated/amelia.lp")
-copyfile("persistent/facet_affinity.lp", "generated/facet_affinity.lp")
+copyfile("persistent/facet_affinity_amelia.lp", "generated/facet_affinity_amelia.lp")
 
 
