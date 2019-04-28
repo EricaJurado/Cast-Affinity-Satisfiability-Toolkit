@@ -15,9 +15,9 @@ affinity(-10..10).
 % person with Y level of facet B
 %facet_affinity(A,X,B,Y,F).
 
-1{pair_affinity(A,B,X) : affinity(X)}1:- human(A), human(B), A!=B. 
+1{pair_affinity(A,B,X) : affinity(X)}1:- character(A), character(B), A!=B. 
 
-:-pair_affinity(H1,H2,X), human(H1), human(H2), H1!=H2,
+:-pair_affinity(H1,H2,X), character(H1), character(H2), H1!=H2,
 			X1 = #sum{A : facet_affinity(F1,L1,F2,L2,A), 
 				level(F1,H1,S1), level(F2,H2,S2),
 				def(L1,S1), def(L2,S2)},

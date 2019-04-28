@@ -4,9 +4,10 @@ import json
 import networkx as nx
 import matplotlib.pyplot as plt
 
-important = ["human", "pai/r_similarity", "pair_affinity", "level"]
+important = ["character", "pair_similarity", "pair_affinity", "level"]
 
-line = linecache.getline('sample_output.txt', 5)
+file_name = input("enter the name of the file to analyze: ")
+line = linecache.getline(file_name, 5)
 
 facts = line.split()
 
@@ -19,7 +20,7 @@ DiG = nx.DiGraph()
 G = nx.Graph()
 
 for fact in facts:
-  if fact[0] == "human":
+  if fact[0] == "charcater":
      DiG.add_node(fact[1])
      print(fact)
   if fact[0] == "pair_affinity":
@@ -103,9 +104,6 @@ G.add_nodes_from(loners)
 
 nx.draw(G, with_labels=True, font_weight='bold', edge_labels=labels)
 plt.show()
-
-
-def makeBarplot():
 
 
 

@@ -3,6 +3,7 @@ from shutil import copyfile
 num_chars = str(5) ##TODO: automate this? and instance file?
 
 facet_names = []
+interest_names = []
 
 folder_name = input("enter folder name: ")
 
@@ -14,7 +15,9 @@ with open(folder_name + "/facets.txt", 'r') as file:
     
 with open(folder_name + "/interests.txt", 'r') as file:
     filedata = file.read()
-    facet_names = facet_names + filedata.rstrip('\n').split('\n')
+    interest_names = filedata.rstrip('\n').split('\n')
+
+facet_and_interests = facet_names + interest_names
 
 #new_facet = input("enter the name of your first desired facet:")
 #while new_facet:
@@ -25,7 +28,7 @@ with open(folder_name + "/interests.txt", 'r') as file:
 with open('persistent/facet_template.lp', 'r') as file :
     filedata = file.read()
 
-for facet_name in facet_names:
+for facet_name in facet_and_interests:
     if facet_name == "":
         continue
 
@@ -38,14 +41,17 @@ for facet_name in facet_names:
 
 
 with open("generated/similarity_generated.lp", 'w') as file:
-    max = str(len(facet_names))
-    file.write("#const max = " + max + ".\n")
+    max_facets = str(len(facet_names))
+    max_interests = str(len(interest_names))
+    max = str(len(facet_and_interests))
+    #file.write("#const max = " + max + ".\n")
     file.write("#const chars = " + num_chars + ".\n")
-    file.write("similarity(-" + max + ".." + max + ").\n\n")
-    #file.write(":-pair_similarity(A, B, T), human(A), human(B), similarity(T),\n")
-    file.write(":-pair_similarity(A, B, T), human(A), human(B), similarity(T),\n")
-    #file.write("X = #sum{L : sim(F,A,B,L), facet(F)},\n	X!=T.")	
+    file.write("similarity(-" + max + ".." + max + ").\n")
+    file.write("facet_similarity(-" + max_facets + ".." + max_facets + ").\n")
+    file.write("interest_similarity(-" + max_interests + ".." + max_interests + ").\n\n")
 
+
+    file.write(":-pair_facet_similarity(A, B, F), character(A), character(B), facet_similarity(F),\n")
     i = 1
     for facet_name in facet_names:
         file.write("\tsim(" + facet_name + ",A,B,E" + str(i) + "),\n")
@@ -54,15 +60,25 @@ with open("generated/similarity_generated.lp", 'w') as file:
 
     for j in range(1,i-1):
         final_string = final_string + "E" + str(j) + "+"
-    final_string = final_string + "E" + str(i-1) + "!=T."
+    final_string = final_string + "E" + str(i-1) + "!=F.\n\n"
     file.write(final_string)
 
-#with open("generated/similarity_instance.lp", 'w') as file:
-#    #file.write("#show pair_similarity/3.\n")
-#    file.write("%problem instance\n")
-#    file.write("human(1.." + num_chars + ").\n\n")
-#    file.write("%add more rules here\n")
-#    file.write("%example:\npair_similarity(1,2,2).\n")
+
+    file.write(":-pair_interest_similarity(A, B, I), character(A), character(B), interest_similarity(I),\n")
+    i = 1
+    for interest_name in interest_names:
+        file.write("\tsim(" + interest_name + ",A,B,E" + str(i) + "),\n")
+        i+=1
+    final_string = "\t"
+
+    for j in range(1,i-1):
+        final_string = final_string + "E" + str(j) + "+"
+    final_string = final_string + "E" + str(i-1) + "!=I.\n\n"
+    file.write(final_string)
+
+    file.write(":-pair_similarity(A, B, T), character(A), character(B), similarity(T), facet_similarity(F), interest_similarity(I),\n")
+    file.write("\tI+F!=T.");
+
 
 copyfile("persistent/similarity_persistant.lp", "generated/similarity_persistant.lp")
 copyfile("persistent/affinity.lp", "generated/affinity.lp")
