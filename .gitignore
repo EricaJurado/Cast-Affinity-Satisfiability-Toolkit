@@ -1,0 +1,5 @@
+*.swp
+*/*.swp
+.idea/*
+.R*
+generated/*
