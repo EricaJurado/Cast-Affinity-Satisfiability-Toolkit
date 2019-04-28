@@ -19,12 +19,32 @@ G.add_edge("erica", "arunpreet")
 G.add_edge("erica", "josh")
 G.add_edge("erica", "zee")
 G.add_edge("arunpreet", "josh")
+G.add_edge("arunpreet", "zee")
 G.add_edge("zee", "josh")
 G.add_edge("ariel", "josh")
 
 print("clustering:")
 print(nx.clustering(G))
 
+print("cliques:") #maximal cliques
+cliques = list(nx.find_cliques(G))
+print(cliques)
+
+#print("enumerate cliques:") #all 
+#cliques = list(nx.enumerate_all_cliques(G))
+#print(cliques)
+
+print("graph clique num:") #size of largest clique
+print(nx.graph_clique_number(G))
+
+print("graph num of cliques:") #number of cliques in whole graph
+print(nx.graph_number_of_cliques(G))
+
+print("erica cliques:")
+print(nx.cliques_containing_node(G, nodes=["erica"]))
+
+print("eccentricity:")
+print(nx.eccentricity(G))
 
 print("drawing?")
 nx.draw(G, with_labels=True, font_weight='bold')

@@ -28,12 +28,13 @@ for fact in facts:
      DiG.add_edge(fact[1],fact[2],weight=myWeight)	
 
 print("drawing?")
-#pos=nx.get_node_attributes(DiG,'pos')
 pos=nx.spring_layout(DiG)
 labels=nx.get_edge_attributes(DiG,'weight')
-nx.draw(DiG, with_labels=True, font_weight='bold', edge_labels=labels)
-nx.draw_networkx_edge_labels(DiG, pos, edge_labels=labels)
-plt.show()
+#nx.draw(DiG, with_labels=True, font_weight='bold', edge_labels=labels)
+#nx.draw_networkx_edge_labels(DiG, pos, edge_labels=labels)
+#plt.show()
+
+loners = []
 
 for node in nx.nodes(DiG):
   in_edges = DiG.in_edges(node)
@@ -63,9 +64,7 @@ for node in nx.nodes(DiG):
     else:
       neg_out_relations = neg_out_relations + [edge[1]]
 
-  #pos_relations = list(set(pos_in_relations) & set(pos_out_relations))
   pos_relations = [value for value in pos_out_relations if value in pos_in_relations]
-  #neg_relations = list(set(neg_in_relations) & set(neg_out_relations))
   neg_relations = [value for value in neg_out_relations if value in neg_in_relations]
   mixed_relations = [value for value in pos_in_relations if value not in pos_out_relations]
   mixed_relations = mixed_relations + [value for value in neg_in_relations if value not in neg_out_relations]
@@ -73,23 +72,40 @@ for node in nx.nodes(DiG):
   print(node)
   print("incoming total: " + str(in_weight))
   print("outgoing total: " + str(out_weight))
-  #print("positive in relationships: " + str(pos_in_relations))
-  #print("positive out relationships: " + str(pos_out_relations))
   print("positive relationships: " + str(pos_relations))
   print("negative relationships: " + str(neg_relations))
   print("mixed relationships: " + str(mixed_relations))
-  #print(neg_in_relations)
-  #print(neg_out_relations)
 
   if(len(pos_relations) == 0):
-    G.add_node(node)
+    loners = loners + [node]
 
   for relation in pos_relations:
     print(relation)
     if(not G.has_edge(node, relation)):
-    	G.add_edge(node, relation)
+      G.add_edge(node, relation)
+
+
+
+
+#nx.draw(G, with_labels=True, font_weight='bold', edge_labels=labels)
+#plt.show()
+
+print("num of cliques of size > 1: " , nx.graph_number_of_cliques(G))
+cliques = list(nx.find_cliques(G))
+print("cliques: " , cliques)
+
+print("num loners: ", len(loners))
+print("loners: ", loners)
+
+print("eccentricity: ", nx.eccentricity(G))
+
+G.add_nodes_from(loners)
 
 nx.draw(G, with_labels=True, font_weight='bold', edge_labels=labels)
-nx.draw(DiG, with_labels=True, font_weight='bold', edge_labels=labels)
-#nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 plt.show()
+
+
+def makeBarplot():
+
+
+
