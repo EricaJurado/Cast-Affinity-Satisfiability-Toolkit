@@ -1,0 +1,18 @@
+{
+	"fileName" : "actions.json",
+	"actions" : [
+		{
+			"name" : "PLAY GAME",
+			"intent" : {
+				"class" : "mood",
+				"type"  : "excited",
+				"intentDirection" : true,
+				"first" : "initiator",
+				"second" : "responder"
+			},
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["STOP PLAYING", "KEEP PLAYING"]
+		}
+	]
+}

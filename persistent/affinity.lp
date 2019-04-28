@@ -9,7 +9,7 @@ def(low, 1..3).
 def(neutral, 4..6).
 def(high, 7..10).
 
-affinity(-10..12).
+affinity(-10..10).
 
 % person with X level of facet A, has affinity affect F for 
 % person with Y level of facet B

@@ -1,0 +1,47 @@
+{
+	"fileName": "volition",
+	"type": "volition",
+	"rules": [
+		{	"name": "Everyone wants to make friends",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"operator": ">",
+					"value": 0
+				}
+			],
+			"effects": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"weight": 5,
+					"intentDirection": true
+				}
+			]
+		},
+		{	"name": "Everyone wants to have fun",
+			"conditions": [
+				{
+					"class": "mood",
+					"type": "bored",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "mood",
+					"type": "excited",
+					"first": "x",
+					"weight": 5,
+					"intentDirection": true
+				}
+			]
+		}
+	]
+}
