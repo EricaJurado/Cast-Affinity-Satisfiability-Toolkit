@@ -1,0 +1,44 @@
+{
+	"schema": [
+		{
+			"class": "network",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": [
+				"friendship",
+			],
+			"defaultValue": 5,
+			"minValue": 0,
+			"maxValue": 10,
+			"allowIntent": false
+		},
+		{
+			"class": "mood",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": [
+				"bored",
+				"excited"
+			],
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "attribute",
+			"types": [
+				"age",
+				"shy",
+				"calm",
+				"sports",
+				"crafts",
+				"videogames"
+			],
+			"isBoolean": false,
+			"directionType": "undirected",
+			"defaultValue": 50,
+			"maxValue": 10,
+			"minValue": 1,
+			"allowIntent": false
+		}
+	],
+}

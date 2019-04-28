@@ -4,11 +4,18 @@ num_chars = str(5) ##TODO: automate this? and instance file?
 
 facet_names = []
 
+folder_name = input("enter folder name: ")
+
 #get requested facets
-with open("persistent/amelia_facets.txt", 'r') as file:
+#with open("persistent/amelia_facets.txt", 'r') as file:
+with open(folder_name + "/facets.txt", 'r') as file:
     filedata = file.read()
     facet_names = filedata.rstrip('\n').split('\n')
     
+with open(folder_name + "/interests.txt", 'r') as file:
+    filedata = file.read()
+    facet_names = facet_names + filedata.rstrip('\n').split('\n')
+
 #new_facet = input("enter the name of your first desired facet:")
 #while new_facet:
 #    facet_names.append(new_facet)
@@ -59,7 +66,7 @@ with open("generated/similarity_generated.lp", 'w') as file:
 
 copyfile("persistent/similarity_persistant.lp", "generated/similarity_persistant.lp")
 copyfile("persistent/affinity.lp", "generated/affinity.lp")
-copyfile("persistent/amelia.lp", "generated/amelia.lp")
-copyfile("persistent/facet_affinity_amelia.lp", "generated/facet_affinity_amelia.lp")
+copyfile(folder_name + "/instance.lp", "generated/instance.lp")
+copyfile(folder_name + "/affinity_rules.lp", "generated/affinity_rules.lp")
 
 
