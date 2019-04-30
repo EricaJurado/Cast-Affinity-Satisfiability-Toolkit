@@ -76,8 +76,12 @@ with open("generated/similarity_generated.lp", 'w') as file:
     final_string = final_string + "E" + str(i-1) + "!=I.\n\n"
     file.write(final_string)
 
-    file.write(":-pair_similarity(A, B, T), character(A), character(B), similarity(T), facet_similarity(F), interest_similarity(I),\n")
-    file.write("\tI+F!=T.");
+    file.write(":-pair_similarity(A, B, T), character(A), character(B), similarity(T),")
+    file.write("\tfacet_similarity(F),\n")
+    file.write("\tinterest_similarity(I),\n")
+    file.write("\tpair_facet_similarity(A, B, F),\n")
+    file.write("\tpair_interest_similarity(A, B, I),\n")
+    file.write("\tI+F!=T.\n");
 
 
 copyfile("persistent/similarity_persistant.lp", "generated/similarity_persistant.lp")

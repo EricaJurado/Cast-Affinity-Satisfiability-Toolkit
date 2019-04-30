@@ -2,12 +2,23 @@
 #const neutral=0.
 #const low=-1.
 
-1{pair_facet_similarity(A,B,X) : similarity(X)}1:- character(A), character(B), A!=B.
-1{pair_interest_similarity(A,B,X) : similarity(X)}1:- character(A), character(B), A!=B.
+1{pair_similarity(A,B,X) : similarity(X)}1:- character(A), character(B), A!=B.
+1{pair_facet_similarity(A,B,X) : facet_similarity(X)}1:- character(A), character(B), A!=B.
+1{pair_interest_similarity(A,B,X) : interest_similarity(X)}1:- character(A), character(B), A!=B.
 
 :-character(A), character(B), similarity(T1), similarity(T2),
 	pair_similarity(A, B, T1), 
 	pair_similarity(B, A, T2),
+	T1!=T2. 
+
+:-character(A), character(B), facet_similarity(T1), facet_similarity(T2),
+	pair_facet_similarity(A, B, T1), 
+	pair_facet_similarity(B, A, T2),
+	T1!=T2. 
+
+:-character(A), character(B), interest_similarity(T1), interest_similarity(T2),
+	pair_interest_similarity(A, B, T1), 
+	pair_interest_similarity(B, A, T2),
 	T1!=T2. 
 
 %rule for specific char matching

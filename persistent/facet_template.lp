@@ -8,6 +8,9 @@ status(template, high).
 status(template, neutral).
 status(template, low).
 
+#const template_high_level=1.
+#const template_low_level=4.
+
 %% Generate/Assign
 
 %every character get an template value
