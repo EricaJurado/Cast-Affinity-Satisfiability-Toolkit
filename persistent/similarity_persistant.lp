@@ -30,6 +30,26 @@
 
 :-char_x_min_n_max_aff(X,N,S), not N{pair_affinity(X,Y,Z) : character(X), character(Y), X!=Y, Z <= S}chars. 
 
+% TODO add the others
+
+%facet matching
+:-match_n_facet_level_match(N,F,L), not N{level(F,H,L) : character(H), facet(F), level_range(L)}N.
+
+:-match_n_facet_level_min(N,F,L), not N{level(F,H,X) : character(H), facet(F), level_range(X), X>=L}N.
+
+:-match_n_facet_level_max(N,F,L), not N{level(F,H,X) : character(H), facet(F), level_range(X), X<=L}N.
+
+:-min_n_facet_level_match(N,F,L), not N{level(F,H,L) : character(H), facet(F), level_range(L)}chars.
+
+:-min_n_facet_level_min(N,F,L), not N{level(F,H,X) : character(H), facet(F), level_range(X), X>=L}chars.
+
+:-min_n_facet_level_max(N,F,L), not N{level(F,H,X) : character(H), facet(F), level_range(X), X<=L}chars.
+
+:-max_n_facet_level_match(N,F,L), not -chars{level(F,H,L) : character(H), facet(F), level_range(L)}N.
+
+:-max_n_facet_level_min(N,F,L), not -chars{level(F,H,X) : character(H), facet(F), level_range(X), X>=L}N.
+
+:-max_n_facet_level_max(N,F,L), not -chars{level(F,H,X) : character(H), facet(F), level_range(X), X<=L}N.
 
 
 %there are exactly N pairs of carachters who have a pair similarity value of exactly S.

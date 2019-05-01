@@ -7,7 +7,7 @@ character(wario).
 
 
 %specify facet details about characters
-level(modesty, mario, 2).
+%level(modesty, mario, 2).
 level(assertiveness, mario, 7).
 level(impulsivenss, mario, 6).
 
@@ -23,4 +23,5 @@ pair_facet_similarity(mario, luigi, 2).
 
 pair_interest_similarity(mario, luigi, 2). 
 
-
+%match_n_facet_level_match(6,modesty,9).
+min_n_facet_level_match(3,modesty,3).
