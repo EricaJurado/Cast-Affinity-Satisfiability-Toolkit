@@ -21,6 +21,6 @@ pair_facet_similarity(mario, bowser, -2).
 match_n_attribute_level_min(4,kidnapping_princesses,7).
 match_n_attribute_level_max(4,kidnapping_princesses,4).
 
-min_n_min_sim(10, 4).
-min_n_max_sim(10, -3).
+%min_n_min_sim(10, 4).
+%min_n_max_sim(10, -3).
 

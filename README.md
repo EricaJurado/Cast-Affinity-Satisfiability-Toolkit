@@ -1,48 +1,59 @@
-# Character Personality Generation
+# Using CAST
+### Settup
+ - Clone this repository.
+ - Install python
+ - Install clingo
+### Input
+Required Input Files:
+  - interests.txt
+  - facets.txt
+  - affintiy_rules.lp
+  - instance.lp
 
-## generating code
-To create facet files, delete everything in the generated folder. Then,
-type: `python3 facet_file_generator.py`
-and follow the prompts to specify the facets you want. 
+Interests and facets are listed by name individually on separate lines in their
+file, in plain english. The affinity rules and the additional constraints in the
+instance file are written in clingo. See the *mario* folder for examples of these
+files. See the wiki page (coming soon) for more detailed explainations of all
+available clingo constraints that can be added in these files.
 
-## running the constraint solver
-To run the constraint solver, in the generated directory,
-run the following command: `clingo 1 *`
+Put these files in a shared folder. The name of this folder will be given to the
+clingo file formatter. 
 
-## adding constraints to the problem instance
-Adding the following code snippets to similarity_instance.lp will have these
-corresponding effects:
+### File formatter
+In the main directory, run the file formatter by typing:
+```sh
+$ mkdir generated
+$ python3 clingo_file_formatter.py
+```
+you will be prompted to enter the folder name containing the files specific to your
+problem instance. The file formatter will process these files and place all necessary
+files into the *generated* folder 
 
-`facet_affinity(F1,L1,F2,L2,A).` Sets a rule that means a person with a facet
-F1 of level L1, will have A added to their affinity towards any person with a
-facet F2 of level L2. A can be positive of negative. Levels L1 and L2 can be
-either low, neutral, or high. 
-
-`match_n_match_sim(N,S).` Will ensure exactly N pairs of carachters have a pair 
-similarity value of exactly S.
-
-`min_n_match_sim(N,S).` Will ensure at least N pairs of carachters have a pair 
-similarity value of exactly S.
-
-`max_n_match_sim(N,S).` Will ensure at most N pairs of carachters have a pair 
-similarity value of exactly S.
-
-`match_n_min_sim(N,S).` Will ensure exactly N pairs of carachters have a pair
-similarity value of at least S.
-
-`match_n_max_sim(N,S).` Will ensure exactly N pairs of carachters have a pair
-similarity value of at most S.
-
-`min_n_min_sim(N,S).` Will ensure at least N pairs of carachters have a pair
-similarity value of at least S.
-
-`max_n_min_sim(N,S).` Will ensure at most N pairs of carachters have a pair
-similarity value of at least S.
-
-`min_n_max_sim(N,S).` Will ensure at least N pairs of carachters have a pair
-similarity value of at most S.
-
-`max_n_max_sim(N,S).` Will ensure at most N pairs of carachters have a pair
-similarity value of at most S.
+### Running clingo
+To run clingo and recieve one possible answer set, do the following:
+```sh
+$ cd generated
+$ clingo 1 *
+```
+in order to save your computed output for later use, or for network analysis:
+```sh
+$ clingo 1 * > ../example_output.txt
+```
+If run multiple times, the results will appear in the same order each time. In order
+to produce random output: 
+```sh
+$ clingo -n 1 --rand-freq=1 *
+```
+or random output from a seed:
+```sh
+$ clingo -n 1 --rand-freq=1 --seed=<SEED> *
+```
+### Network Analysis
+In order to run the file that we used to perform network analysis:
+```sh
+$ python3 networks/network_analysis.py
+```
+you will be prompted for the name of the file you wish to analyze, as well as the
+solution number which you wish to analyze.
 
 
