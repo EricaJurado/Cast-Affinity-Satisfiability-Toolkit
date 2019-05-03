@@ -13,7 +13,9 @@ Required Input Files:
 Interests and facets are listed by name individually on separate lines in their
 file, in plain english. The affinity rules and the additional constraints in the
 instance file are written in clingo. See the *mario* folder for examples of these
-files. See the wiki page (coming soon) for more detailed explainations of all
+files. See the (wiki
+page)[https://github.com/EricaJurado/Cast-Affinity-Satisfiability-Toolkit/wiki]
+for more detailed explainations of all
 available clingo constraints that can be added in these files.
 
 Put these files in a shared folder. The name of this folder will be given to the
