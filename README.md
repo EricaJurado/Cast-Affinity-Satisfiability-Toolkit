@@ -1,8 +1,16 @@
 # Using CAST
 ### Settup
- - Clone this repository.
- - Install python
+ - Clone this repository
+ - Install python3 (if you don't have it installed already)
  - Install clingo
+ ```
+ sudo apt install gringo
+ ```
+ - install python packages
+ ```
+ pip install networkx
+ pip install matplotlib 
+ ```
 ### Input
 Required Input Files:
   - interests.txt
