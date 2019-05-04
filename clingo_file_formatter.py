@@ -21,7 +21,6 @@ with open(folder_name + "/instance.lp", 'r') as file:
                 num_chars += int(nums[1]) - int(nums[0]) + 1
             else:
                 num_chars += 1
-    print(num_chars)
 
 #get requested facets
 #with open("persistent/amelia_facets.txt", 'r') as file:
